@@ -19,3 +19,8 @@
 """ r2x is a Python Package which provides a full-featured API for the
 creation of custom RTL memory-mapped register banks
 """
+
+from r2x.r2x import *
+
+from r2x.design import *
+from r2x.bank import *

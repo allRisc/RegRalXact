@@ -19,3 +19,5 @@
 """ r2x_test is a Python Package which provides unit testing capabilities for 
 the r2x package
 """
+
+from r2x_test.util_test import *

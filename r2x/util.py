@@ -16,19 +16,35 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ############################################################################
+""" A set of useful method definitions for the r2x package """
 
-import r2x
+def value2hex(v:str, length:int=None) -> str :
+    """Converts the provided string value to a hex representation without prefix"""
 
-#bank = r2x.bank_from_file("sample_bank.csv")
+    v = v.lower()
 
-tbl = [["bank","name","sample_bank"],
-       ["bank","reg_width","64"],
-       ["bank","bus_type","axi4"],
-       ["register","version","ro"],
-       ["field","major","8","ro","0"],
-       ["field","minor","8","ro","0"],
-       ["field","patch","8","ro","0x1"]]
+    # Try a straight conversion to integer
+    try :
+        h = int(v)
+        rval = hex(h)[2:]
+    except :
+        rval = None
 
-bank = r2x.bank_from_table(tbl)
+    if not rval is None :
+        pass
 
-print(bank)
+    # Check if the string is provided as a hex
+    elif (v.startswith("0x")) :
+        rval = v[2:]
+    elif (v.startswith("h")) :
+        rval = v[1:]
+    elif (v.startswith("'h")) :
+        rval = v[2:]
+    
+    # Pad the hex if necessary and return
+    if length is None :
+        return rval
+    elif length > len(rval) :
+        return ('0' * (length - len(rval))) + rval
+    else :
+        return rval[(len(rval)-length):]

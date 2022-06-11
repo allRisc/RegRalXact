@@ -1,0 +1,7 @@
+bank,name,sample_bank
+bank,reg_width,64
+bank,bus_type,axi4
+register,version,ro
+field,major,8,ro,0
+field,minor,8,ro,0
+field,patch,8,ro,1

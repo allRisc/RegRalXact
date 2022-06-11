@@ -17,18 +17,21 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ############################################################################
 
-import r2x
+from r2x.util import *
 
-#bank = r2x.bank_from_file("sample_bank.csv")
+import unittest
+import random
 
-tbl = [["bank","name","sample_bank"],
-       ["bank","reg_width","64"],
-       ["bank","bus_type","axi4"],
-       ["register","version","ro"],
-       ["field","major","8","ro","0"],
-       ["field","minor","8","ro","0"],
-       ["field","patch","8","ro","0x1"]]
 
-bank = r2x.bank_from_table(tbl)
+class TestUtil (unittest.TestCase) :
+    """Unit Test Cases for Methods in the r2x.util module"""
 
-print(bank)
+    def test_value2hex (self) :
+        """Tests the functionality of the value2hex method"""
+
+        self.assertEqual("a", value2hex("10"), "Check that integers get converted properly (10)")
+        self.assertEqual("2b", value2hex("43"), "Check that integers get converted properly (43)")
+
+        self.assertEqual("a", value2hex("0xA"), "Check the default hex prefixes work")
+        self.assertEqual("a", value2hex("hA"), "Check the default hex prefixes work")
+        self.assertEqual("a", value2hex("'hA"), "Check the default hex prefixes work")
