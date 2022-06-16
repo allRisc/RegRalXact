@@ -16,34 +16,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ############################################################################
-""" A set of useful method definitions for the r2x package """
+""" Package which contains the RTL parsing and automatic creation API """
 
-def value2hex(v, length:int=None) -> str :
-    """Converts the provided string value to a hex representation without prefix"""
-
-    # Try a straight conversion to integer
-    if (isinstance(v, (int, float))) :
-        v = int(v)
-        rval = hex(v)[2:]
-    else :
-        v = v.lower()
-        rval = None
-
-    if not rval is None :
-        pass
-
-    # Check if the string is provided as a hex
-    elif (v.startswith("0x")) :
-        rval = v[2:]
-    elif (v.startswith("h")) :
-        rval = v[1:]
-    elif (v.startswith("'h")) :
-        rval = v[2:]
-    
-    # Pad the hex if necessary and return
-    if length is None :
-        return rval
-    elif length > len(rval) :
-        return ('0' * (length - len(rval))) + rval
-    else :
-        return rval[(len(rval)-length):]
+from r2x.rtl.rtl      import *
+import r2x.rtl.verilog  as verilog
+import r2x.rtl.sverilog as sverilog

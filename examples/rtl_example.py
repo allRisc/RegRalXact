@@ -19,16 +19,16 @@
 
 import r2x
 
-#bank = r2x.bank_from_file("sample_bank.csv")
+bank = r2x.bank_from_file("sample_bank.csv")
 
-tbl = [["bank","name","sample_bank"],
-       ["bank","reg_width","64"],
-       ["bank","bus_type","axi4"],
-       ["register","version","ro"],
-       ["field","major","8","ro","0"],
-       ["field","minor","8","ro","0"],
-       ["field","patch","8","ro","0x1"]]
+# tbl = [["bank","name","sample_bank"],
+#        ["bank","reg_width","64"],
+#        ["bank","bus_type","axi4"],
+#        ["register","version","ro"],
+#        ["field","major","8","ro","0"],
+#        ["field","minor","8","ro","0"],
+#        ["field","patch","8","ro","0x1"]]
 
-bank = r2x.bank_from_table(tbl)
+# bank = r2x.bank_from_table(tbl)
 
 print(bank)

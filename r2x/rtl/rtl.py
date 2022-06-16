@@ -16,34 +16,40 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ############################################################################
-""" A set of useful method definitions for the r2x package """
+""" Module Which Contains some base classes for the parsing and creation of RTL files"""
 
-def value2hex(v, length:int=None) -> str :
-    """Converts the provided string value to a hex representation without prefix"""
+import os
 
-    # Try a straight conversion to integer
-    if (isinstance(v, (int, float))) :
-        v = int(v)
-        rval = hex(v)[2:]
-    else :
-        v = v.lower()
-        rval = None
+from abc import *
 
-    if not rval is None :
+from r2x.design import Design
+
+class Parser(ABC):
+    @staticmethod
+    def strip_blank_lines(rtl:str) -> str:
+        """Strips blank lines for the rtl.
+        Blank lines here are any lines which contain exclusively white space.
+
+        Args:
+            rtl (str): The RTL string to strip blank lines from
+
+        Returns:
+            str: The RTL with blank lines stripped.
+        """
+        lines = rtl.splitlines()
+
+        rtl = ""
+
+        for line in lines :
+            print(f'"{line}"')
+            if line.strip() != '' :
+                rtl += line + '\n'
+
+        return rtl
+
+    @abstractclassmethod
+    def parse_rtl(cls, rtl:str) -> Design :
         pass
 
-    # Check if the string is provided as a hex
-    elif (v.startswith("0x")) :
-        rval = v[2:]
-    elif (v.startswith("h")) :
-        rval = v[1:]
-    elif (v.startswith("'h")) :
-        rval = v[2:]
-    
-    # Pad the hex if necessary and return
-    if length is None :
-        return rval
-    elif length > len(rval) :
-        return ('0' * (length - len(rval))) + rval
-    else :
-        return rval[(len(rval)-length):]
+class Builder(ABC) :
+    pass

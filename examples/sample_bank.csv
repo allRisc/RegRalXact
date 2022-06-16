@@ -1,7 +1,13 @@
-bank,name,sample_bank
-bank,reg_width,64
-bank,bus_type,axi4
-register,version,ro
+bank,name,sample_bank,,
+bank,reg_width,64,,
+bank,bus_type,axi4,,
+register,version,ro,,
 field,major,8,ro,0
 field,minor,8,ro,0
 field,patch,8,ro,1
+register,status,ro,,
+field,stat0,1,ro,0
+field,stat1,8,ro,54
+register,control,rw,,
+field,ctrl0,1,rw,1
+field,ctrl1,8,rw,128

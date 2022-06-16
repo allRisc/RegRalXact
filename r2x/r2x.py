@@ -19,6 +19,9 @@
 """ Module which contains the base-level API for the r2x pacakge """
 
 import math
+
+import pandas as pd
+
 from r2x.bank import *
 from r2x.util import *
 
@@ -49,7 +52,7 @@ def _fld_from_row(row:list) -> Field :
     
     return fld
 
-def bank_from_table(tbl) -> Bank:
+def bank_from_table(tbl:list) -> Bank:
     
     # Process initial bank settings from tbl
     name = DEFAULT_BANK_NAME
@@ -75,6 +78,9 @@ def bank_from_table(tbl) -> Bank:
     for row in tbl :
         if row[0] == 'register' :
             if (not reg is None) :
+                if (not fld is None) :
+                    reg.add_field(fld)
+                    fld = None
                 bnk.add_register(reg)
             reg = Register(row[1], str2access(row[2]))
         elif row[0] == 'field' :
@@ -94,15 +100,34 @@ def bank_from_file(filename:str) -> Bank :
     if (not os.path.exists(filename)) :
         raise ValueError(f"Filename ({filename}) does not exist to create bank from")
 
+    print(filename)
+
     if filename.endswith(".csv") :
-        pass
+        tbl = pd.read_csv(filename, header=None).values
     elif filename.endswith(".xls") :
-        pass
+        tbl = pd.read_excel(filename, header=None).values
     elif filename.endswith(".xlsx") :
-        pass
+        tbl = pd.read_excel(filename, header=None).values
     else :
         raise ValueError("r2x Currently Only Supports Bank Creation from Excel and CSV files")
 
-    tbl = []
-
     return bank_from_table(tbl)
+
+
+def parse_rtl_file(filename:str) :
+    if (not os.path.exists(filename)) :
+        raise ValueError(f"Filename ({filename}) does not exist to parse rtl from")
+    
+    with open(filename, "r") as f :
+        rtl = f.read()
+
+    print(rtl)
+
+    if (filename.endswith(".sv")) :
+        return sverilog.to_design(rtl)
+    elif (filename.endswith(".v")) :
+        return verilog.to_design(rtl)
+    elif (filename.endswith(".vhd") or filename.endswith(".vhdl")) :
+        raise NotImplementedError("Parsing of VHDL files is not currently implemented")
+    else :
+        raise ValueError(f"The RTL file '{filename}' has an unknown extension")
