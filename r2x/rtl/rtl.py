@@ -52,4 +52,36 @@ class Parser(ABC):
         pass
 
 class Builder(ABC) :
-    pass
+
+    def __init__(self, tab_size:int=2, use_tab:bool=False, newline_chars:str="\n") :
+        self.setup_newline(newline_chars)
+        self.setup_tabs(tab_size, use_tab)
+
+    @abstractmethod
+    def write_rtl(self, design:Design, filename:str, fileheader:str=None) :
+        pass
+
+    @abstractmethod
+    def design_to_string(self, design:Design) :
+        pass
+
+    @property
+    def tab(self) :
+        return " " * self._tab_size if not self._use_tab else "\t"
+
+    @property
+    def newline(self) :
+        return self._newline_chars
+
+    def setup_newline(self, newline_chars:str) :
+        self._newline_chars = newline_chars
+
+    def setup_tabs(self, tab_size:int=2, use_tab:bool=False) :
+        self._tab_size = tab_size
+        self._use_tab = use_tab
+
+    def get_tab_size(self) :
+        return self._tab_size
+
+    def use_tab(self) :
+        return self._use_tab

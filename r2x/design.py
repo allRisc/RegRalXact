@@ -25,6 +25,7 @@ from r2x.bank import *
 class PortType(Enum) :
     WIRE = 0
     REG = 1
+    LOGIC = 2
 
 
 class PortDirection(Enum) :
@@ -51,7 +52,7 @@ class Port :
     @name.setter
     def name(self, name:str) :
         if (not isinstance(name, str)) :
-            raise TypeError("Field Name Must be String")
+            raise TypeError("Port Name Must be String")
         self._name = name
 
     @property
@@ -65,7 +66,7 @@ class Port :
                 if (not isinstance(s, int)) :
                     raise TypeError("Port size lists must contain only integers")
         elif (not isinstance(size, int)) :
-            raise TypeError("Field size must be integer or list of integers")
+            raise TypeError("Port size must be integer or list of integers")
         self._size = size
 
     @property
@@ -75,7 +76,7 @@ class Port :
     @ptype.setter
     def ptype(self, ptype:PortType) :
         if (not isinstance(ptype, PortType)) :
-            raise TypeError("Port ptype must be a valid FieldType")
+            raise TypeError("Port ptype must be a valid PortType")
         self._ptype = ptype
 
     @property
@@ -85,9 +86,54 @@ class Port :
     @direction.setter
     def direction(self, direction:PortDirection) :
         if (not isinstance(direction, PortDirection)) :
-            raise TypeError("Field direction must be a valid PortDirection")
+            raise TypeError("Port direction must be a valid PortDirection")
         self._direction = direction
 
+
+class ParamType (Enum) :
+    NONE = 0
+    INTEGER = 1
+    FLOAT = 2
+    BOOL = 3
+    BIT_VALUES = 4
+    STRING = 5
+
+class Param :
+    """ Class which represents an RTL parameter"""
+    
+    def __init__(self, name, ptype:ParamType=ParamType.NONE,
+                       default=None):
+        self.name = name
+        self.ptype = ptype
+        self.default = default
+
+    @property
+    def name(self) -> str:
+      return self._name
+
+    @name.setter
+    def name(self, name:str) :
+        if (not isinstance(name, str)) :
+            raise TypeError("Parameter Name Must be String")
+        self._name = name
+
+    @property
+    def default(self):
+        return self._default
+
+    @default.setter
+    def default(self, default) :
+        self._default = default
+
+    @property
+    def ptype(self) -> ParamType:
+        return self._ptype
+
+    @ptype.setter
+    def ptype(self, ptype:ParamType) :
+        if (not isinstance(ptype, ParamType)) :
+            raise TypeError("Param ptype must be a valid ParamType")
+        self._ptype = ptype
 
 class Design :
     """ Class which represents an RTL design """
@@ -98,6 +144,7 @@ class Design :
         self._ports = []
         self._parameters = []
         self._banks = {}
+        self._submodules = {}
 
     @property
     def name(self) -> str:
@@ -108,4 +155,22 @@ class Design :
         if (not isinstance(name, str)) :
             raise TypeError("Bank Name Must be String")
         self._name = name
+
+    def has_params(self) -> bool :
+        return len(self._parameters) != 0
+
+    def get_params(self) -> list :
+        return self._parameters
+
+    def has_ports(self) -> bool :
+        return len(self._ports) != 0
+
+    def get_ports(self) -> list :
+        return self._ports
+
+    def has_banks(self) -> bool :
+        return len(self._banks) != 0
+
+    def has_submodules(self) -> bool :
+        return len(self._submodules) != 0
 

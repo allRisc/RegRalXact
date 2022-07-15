@@ -21,12 +21,10 @@
 from r2x.util import *
 from r2x.design import *
 
-import r2x.rtl.verilog as verilog
+from r2x.rtl.verilog import VerilogBuilder, VerilogParser 
 
-def to_design(rtl:str) -> Design :
-    rtl = verilog.strip_comments(rtl)
-    print(f'"{rtl}"')
-    rtl = verilog.strip_blank_lines(rtl)
-    print(f'"{rtl}"')
-    
-    raise NotImplementedError("r2x.rtl.verilog.verilog_to_design not currently implemented")
+def SVerilogBuilder (VerilogBuilder) :
+    pass
+
+def SVerilogParser (VerilogParser) :
+    pass
