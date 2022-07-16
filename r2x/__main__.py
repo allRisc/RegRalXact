@@ -16,8 +16,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ############################################################################
-""" r2x is a Python Package which provides a full-featured API for the
-creation of custom RTL memory-mapped register banks
-"""
 
-VERSION = "0.0.1-Alpha"
+import sys
+
+def main() :
+  raise NotImplementedError("r2x main() is not yet implemented...")
+
+
+if __name__ == "__main__" :
+  ret_val = main() 
+  sys.exit(ret_val)
