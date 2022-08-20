@@ -34,7 +34,32 @@ class AccessType(Enum) :
   """Write Only"""
 
   ReturnToZero = "RTZ"
-  """Return to Zero"""  
+  """Return to Zero"""
+
+  @classmethod
+  def from_str(cls, s:str) :
+    """Converts the string to a specified access type
+
+    Args:
+        s (str): The string to convert
+
+    Raises:
+      ValueError: If the string cannot be properly converted
+
+    Returns:
+        AccessType: The corresponding access type
+    """
+    s = s.replace(" ","").lower()
+
+    if s in ['ro', 'read-only', 'readonly'] :
+      return AccessType.RO
+    if s in ['rw', 'read-write', 'readwrite'] :
+      return AccessType.RW
+    if s in ['wo', 'write-only', 'writeonly'] :
+      return AccessType.WO
+    if s in ['rtz', 'returntozero', 'return-to-zero'] :
+      return AccessType.RO
+    raise ValueError(f"{s} is not a valid string for an AccessType")
 
 
 class MemoryComponent (ABC) :
@@ -369,7 +394,8 @@ class AddressBank (MemoryComponent):
     }
 
 class MemoryMap:
-  """Class which represents a MemoryMap
+  """Class which represents a MemoryMap.
+  Contains a set of AddressBanks
   """
 
   def __init__(self, name:str) :
@@ -377,7 +403,23 @@ class MemoryMap:
     self.banks = []
 
   def add_bank(self, bank:AddressBank) :
+    """Adds the AddressBank to the MemoryMap
+
+    Args:
+        bank (AddressBank): The address bank to add
+    """
     self.banks.append(bank)
+
+  @property
+  def name(self) -> str :
+    """The memory map name"""
+    return self._name
+
+  @name.setter
+  def name(self, name:str) :
+    if not isinstance(name, str) :
+      raise TypeError(f"MemoryMap name must be valid string (not '{name}')")
+    self._name = name
 
   @classmethod
   def from_dict(cls, d:dict) :

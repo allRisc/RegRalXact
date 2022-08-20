@@ -84,55 +84,308 @@
 <dt class="sig sig-object py" id="r2x.memory_map.AccessType">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">r2x.memory_map.</span></span><span class="sig-name descname"><span class="pre">AccessType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#r2x.memory_map.AccessType" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
-<p>An enumeration.</p>
+<p>All of the permissable access types for a Field or Register in a MemoryMap/Address Bank</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="r2x.memory_map.AccessType.RO">
-<span class="sig-name descname"><span class="pre">RO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#r2x.memory_map.AccessType.RO" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">RO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'RO'</span></em><a class="headerlink" href="#r2x.memory_map.AccessType.RO" title="Permalink to this definition"></a></dt>
 <dd><p>Read Only</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="r2x.memory_map.AccessType.RW">
-<span class="sig-name descname"><span class="pre">RW</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#r2x.memory_map.AccessType.RW" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">RW</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'RW'</span></em><a class="headerlink" href="#r2x.memory_map.AccessType.RW" title="Permalink to this definition"></a></dt>
 <dd><p>Read-Write</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="r2x.memory_map.AccessType.ReturnToZero">
-<span class="sig-name descname"><span class="pre">ReturnToZero</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#r2x.memory_map.AccessType.ReturnToZero" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">ReturnToZero</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'RTZ'</span></em><a class="headerlink" href="#r2x.memory_map.AccessType.ReturnToZero" title="Permalink to this definition"></a></dt>
 <dd><p>Return to Zero</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="r2x.memory_map.AccessType.WO">
-<span class="sig-name descname"><span class="pre">WO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#r2x.memory_map.AccessType.WO" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">WO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'WO'</span></em><a class="headerlink" href="#r2x.memory_map.AccessType.WO" title="Permalink to this definition"></a></dt>
 <dd><p>Write Only</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="r2x.memory_map.AccessType.from_str">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#r2x.memory_map.AccessType.from_str" title="Permalink to this definition"></a></dt>
+<dd><p>Converts the string to a specified access type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>s</strong> (<em>str</em>) – The string to convert</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the string cannot be properly converted</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The corresponding access type</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#r2x.memory_map.AccessType" title="r2x.memory_map.AccessType">AccessType</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="r2x.memory_map.AddressBank">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">r2x.memory_map.</span></span><span class="sig-name descname"><span class="pre">AddressBank</span></span><a class="headerlink" href="#r2x.memory_map.AddressBank" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">r2x.memory_map.</span></span><span class="sig-name descname"><span class="pre">AddressBank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accessType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#r2x.memory_map.AccessType" title="r2x.memory_map.AccessType"><span class="pre">r2x.memory_map.AccessType</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">AccessType.RW</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">volatile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reserved</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regSize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">32</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#r2x.memory_map.AddressBank" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#r2x.memory_map.MemoryComponent" title="r2x.memory_map.MemoryComponent"><code class="xref py py-class docutils literal notranslate"><span class="pre">r2x.memory_map.MemoryComponent</span></code></a></p>
+<p>Class which represents an Address Bank</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="r2x.memory_map.AddressBank.add_register">
+<span class="sig-name descname"><span class="pre">add_register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#r2x.memory_map.Register" title="r2x.memory_map.Register"><span class="pre">r2x.memory_map.Register</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#r2x.memory_map.AddressBank.add_register" title="Permalink to this definition"></a></dt>
+<dd><p>Adds a register to the address bank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>reg</strong> (<a class="reference internal" href="#r2x.memory_map.Register" title="r2x.memory_map.Register"><em>Register</em></a>) – The register to add to the address bank</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="r2x.memory_map.AddressBank.from_dict">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#r2x.memory_map.AddressBank.from_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Converts the dictionary representation of the Address Bank to a AddressBank object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>d</strong> (<em>dict</em>) – The dictionary to build the AddressBank from.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The AddressBank object derived from the dictionary</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#r2x.memory_map.AddressBank" title="r2x.memory_map.AddressBank">AddressBank</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="r2x.memory_map.AddressBank.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#r2x.memory_map.AddressBank.to_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a dictionary representation of the register</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The dictionary representation of the register</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="r2x.memory_map.Field">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">r2x.memory_map.</span></span><span class="sig-name descname"><span class="pre">Field</span></span><a class="headerlink" href="#r2x.memory_map.Field" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">r2x.memory_map.</span></span><span class="sig-name descname"><span class="pre">Field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accessType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#r2x.memory_map.AccessType" title="r2x.memory_map.AccessType"><span class="pre">r2x.memory_map.AccessType</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">AccessType.RW</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">volatile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reserved</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#r2x.memory_map.Field" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#r2x.memory_map.MemoryComponent" title="r2x.memory_map.MemoryComponent"><code class="xref py py-class docutils literal notranslate"><span class="pre">r2x.memory_map.MemoryComponent</span></code></a></p>
+<p>Class which represents a register field</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="r2x.memory_map.Field.from_dict">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#r2x.memory_map.Field.from_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Converts the dictionary representation of the field to a Field object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>d</strong> (<em>dict</em>) – The dictionary to build the field from.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The field object derived from the dictionary</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#r2x.memory_map.Field" title="r2x.memory_map.Field">Field</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="r2x.memory_map.Field.reset">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reset</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#r2x.memory_map.Field.reset" title="Permalink to this definition"></a></dt>
+<dd><p>The reset of the field in bits</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="r2x.memory_map.Field.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#r2x.memory_map.Field.to_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a dictionary representation of the field</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The dictionary representation of the field</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="r2x.memory_map.Field.width">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">width</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#r2x.memory_map.Field.width" title="Permalink to this definition"></a></dt>
+<dd><p>The width of the field in bits</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="r2x.memory_map.MemoryComponent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">r2x.memory_map.</span></span><span class="sig-name descname"><span class="pre">MemoryComponent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accessType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#r2x.memory_map.AccessType" title="r2x.memory_map.AccessType"><span class="pre">r2x.memory_map.AccessType</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">AccessType.RW</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">volatile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reserved</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#r2x.memory_map.MemoryComponent" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Abstract Class which contains the common aspects of a MemoryComponent (Field, Register, AddressBank)</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="r2x.memory_map.MemoryComponent.accessType">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">accessType</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#r2x.memory_map.MemoryComponent.accessType" title="Permalink to this definition"></a></dt>
+<dd><p>The memory component accessType</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="r2x.memory_map.MemoryComponent.from_dict">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#r2x.memory_map.MemoryComponent.from_dict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="r2x.memory_map.MemoryComponent.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#r2x.memory_map.MemoryComponent.name" title="Permalink to this definition"></a></dt>
+<dd><p>The memory component name</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="r2x.memory_map.MemoryComponent.offset">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">offset</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#r2x.memory_map.MemoryComponent.offset" title="Permalink to this definition"></a></dt>
+<dd><p>The memory component offset</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="r2x.memory_map.MemoryComponent.reserved">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reserved</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#r2x.memory_map.MemoryComponent.reserved" title="Permalink to this definition"></a></dt>
+<dd><p>Whether the MemoryComponent is reserved</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="r2x.memory_map.MemoryComponent.to_dict">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#r2x.memory_map.MemoryComponent.to_dict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="r2x.memory_map.MemoryComponent.volatile">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">volatile</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#r2x.memory_map.MemoryComponent.volatile" title="Permalink to this definition"></a></dt>
+<dd><p>Whether the MemoryComponent is volatile</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="r2x.memory_map.MemoryMap">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">r2x.memory_map.</span></span><span class="sig-name descname"><span class="pre">MemoryMap</span></span><a class="headerlink" href="#r2x.memory_map.MemoryMap" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">r2x.memory_map.</span></span><span class="sig-name descname"><span class="pre">MemoryMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#r2x.memory_map.MemoryMap" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class which represents a MemoryMap.
+Contains a set of AddressBanks</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="r2x.memory_map.MemoryMap.add_bank">
+<span class="sig-name descname"><span class="pre">add_bank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bank</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#r2x.memory_map.AddressBank" title="r2x.memory_map.AddressBank"><span class="pre">r2x.memory_map.AddressBank</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#r2x.memory_map.MemoryMap.add_bank" title="Permalink to this definition"></a></dt>
+<dd><p>Adds the AddressBank to the MemoryMap</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bank</strong> (<a class="reference internal" href="#r2x.memory_map.AddressBank" title="r2x.memory_map.AddressBank"><em>AddressBank</em></a>) – The address bank to add</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="r2x.memory_map.MemoryMap.from_dict">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#r2x.memory_map.MemoryMap.from_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Converts the dictionary representation of the Memory Map to a MemoryMap object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>d</strong> (<em>dict</em>) – The dictionary to build the MemoryMap from.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The MemoryMap object derived from the dictionary</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#r2x.memory_map.MemoryMap" title="r2x.memory_map.MemoryMap">MemoryMap</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="r2x.memory_map.MemoryMap.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#r2x.memory_map.MemoryMap.name" title="Permalink to this definition"></a></dt>
+<dd><p>The memory map name</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="r2x.memory_map.MemoryMap.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#r2x.memory_map.MemoryMap.to_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a dictionary representation of the register</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The dictionary representation of the register</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="r2x.memory_map.Register">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">r2x.memory_map.</span></span><span class="sig-name descname"><span class="pre">Register</span></span><a class="headerlink" href="#r2x.memory_map.Register" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">r2x.memory_map.</span></span><span class="sig-name descname"><span class="pre">Register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accessType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#r2x.memory_map.AccessType" title="r2x.memory_map.AccessType"><span class="pre">r2x.memory_map.AccessType</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">AccessType.RW</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">volatile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reserved</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimension</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#r2x.memory_map.Register" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#r2x.memory_map.MemoryComponent" title="r2x.memory_map.MemoryComponent"><code class="xref py py-class docutils literal notranslate"><span class="pre">r2x.memory_map.MemoryComponent</span></code></a></p>
+<p>Class which represents a register</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="r2x.memory_map.Register.add_field">
+<span class="sig-name descname"><span class="pre">add_field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fld</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#r2x.memory_map.Field" title="r2x.memory_map.Field"><span class="pre">r2x.memory_map.Field</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#r2x.memory_map.Register.add_field" title="Permalink to this definition"></a></dt>
+<dd><p>Adds a field to the given register</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fld</strong> (<a class="reference internal" href="#r2x.memory_map.Field" title="r2x.memory_map.Field"><em>Field</em></a>) – The field to add to the register</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="r2x.memory_map.Register.dimension">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dimension</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#r2x.memory_map.Register.dimension" title="Permalink to this definition"></a></dt>
+<dd><p>The dimension of the register</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="r2x.memory_map.Register.from_dict">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#r2x.memory_map.Register.from_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Converts the dictionary representation of the register to a Register object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>d</strong> (<em>dict</em>) – The dictionary to build the register from.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The register object derived from the dictionary</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#r2x.memory_map.Register" title="r2x.memory_map.Register">Register</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="r2x.memory_map.Register.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#r2x.memory_map.Register.to_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a dictionary representation of the register</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The dictionary representation of the register</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
