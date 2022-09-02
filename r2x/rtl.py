@@ -16,7 +16,3 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ############################################################################
-
-""" r2x_test is a Python Package which provides unit testing capabilities for 
-the r2x package
-"""

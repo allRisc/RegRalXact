@@ -19,3 +19,8 @@
 """ r2x is a Python Package which provides a full-featured API for the
 creation of custom RTL memory-mapped register banks
 """
+
+from enum import Enum
+
+class RTL (Enum) :
+  SystemVerilog = 0
